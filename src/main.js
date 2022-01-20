@@ -82,7 +82,7 @@ document
   .querySelector("#newProductBtn")
   .addEventListener("click", () => {
     const _product = {
-      owner: "0x2EF48F32eB0AEB90778A2170a0558A941b72BFFb",
+      owner: "0x4fe2ad3b8fDB8C9AC69a4613591E19f1eB08643A",
       name: document.getElementById("newProductName").value,
       image: document.getElementById("newImgUrl").value,
       description: document.getElementById("newProductDescription").value,
@@ -95,3 +95,12 @@ document
     notification(`🎉 You successfully added "${_product.name}".`)
     renderProducts()
   })
+
+  document.querySelector("#marketplace").addEventListener("click", (e) => {
+  if(e.target.className.includes("buyBtn")) {
+    const index = e.target.id
+    products[index].sold++
+    notification(`🎉 You successfully bought "${products[index].name}".`)
+    renderProducts()
+  }
+})
